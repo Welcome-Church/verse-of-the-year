@@ -1,0 +1,113 @@
+
+function wait(ms) {
+    return new Promise(res => setTimeout(res, ms))
+}
+
+const typing = async (verse, speed, wordSpace) => {  
+    const verseArray = verse.split("");
+    
+    for (let i = 0; i < verseArray.length; i++) {
+        await wait(speed);
+        wordSpace.innerHTML += verseArray[i]; 
+    }
+}
+
+let loading = true;
+let verses = null;
+fetch("./verses/verses.json")
+    .then(res => res.json())
+    .then(data => {
+        console.log(data);
+        verses = data;
+        loading = false;
+    })
+    .catch((error) => {
+
+    })
+
+const header = document.getElementById("header");
+const wordBtn = document.getElementById("word-btn");
+const mainSpace = document.getElementById("main");
+const wordSpace = document.getElementById("word-space");
+const indexSpace = document.getElementById("index-space");
+const actionSection = document.getElementById("action-section");
+const shareBtn = document.getElementById("share-btn");
+const downloadBtn = document.getElementById("download-btn");
+const cursor = document.getElementById("cursor");
+
+async function anim(element) {
+    const keyframe = [
+        {opacity: 0},
+        {opacity: 1}
+    ]
+
+    const option = {
+        delay: 500,
+        duration: 300
+    }
+    console.log(element, "animate");
+    const a = element.animate(keyframe, option);
+    a.onfinish = () => {
+        element.style.opacity = 1;
+    }
+    await a.finished;
+    //element.style.opacity = 1;
+}
+
+const lampImage = document.getElementById("lamp_image");
+const famImage = document.getElementById("fam_image");
+const titleImage = document.getElementById("title_image");
+wordBtn.addEventListener("click", async (event) => {
+    if (loading) return;
+    wordBtn.style.display = "none";
+    mainSpace.style.display = "block";
+    await anim(lampImage);
+    await anim(famImage);
+    //cursor.style.visibility = "visible";
+    const verse = verses.words[Math.floor(Math.random() * verses.words.length)];
+    
+    const index = verse.index;
+    const indexString = `\n${index.book} ${index.chapter}장 ${index.verse}절`;
+    console.log(indexString);
+    await typing(verse.text, 100, wordSpace);
+    const br = document.createElement("br");
+    indexSpace.appendChild(br);
+    await typing(indexString, 100, indexSpace);
+    await anim(titleImage);
+    //cursor.style.visibility = "hidden";
+    actionSection.style.visibility = "visible";
+    if (!navigator.share) {
+        shareBtn.style.visibility = "hidden";
+    }
+})
+
+const main = document.querySelector(".bg");
+downloadBtn.addEventListener("click", (event) => {
+    actionSection.style.visibility = "hidden";
+    htmlToImage.toPng(main)
+        .then((dataUrl) => {
+            const link = document.createElement('a')
+            link.download="dsf";
+            link.href = dataUrl
+            link.click()
+        }).then(() => {
+            actionSection.style.visibility = "visible";
+        })
+})
+
+shareBtn.addEventListener("click", async (event) => {
+    actionSection.style.visibility = "hidden";
+    const blob = await htmlToImage.toBlob(main);
+    const file = new File([blob], "verse.png", { type: "image/png" });
+
+    if (navigator.canShare({ files: [file] })) {
+        await navigator.share({
+        files: [file],
+        title: "말씀"
+        });
+    } else {
+        alert("이 기기에서는 공유를 지원하지 않습니다.");
+    }
+    actionSection.style.visibility = "visible";
+})
+

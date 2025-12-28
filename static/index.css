@@ -1,0 +1,171 @@
+
+body{
+    height: 90%;
+    margin: 0 auto;
+}
+
+.bg{
+    height: 90dvh;
+    aspect-ratio: 5 / 7;
+    background-image: url(./image/background.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size : 100% 100%;
+    margin: 0 auto;
+    position: relative;
+}
+
+#middle_div{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 15%;
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    justify-content: center;
+}
+
+#main{
+    font-size: 2rem;
+    text-align: center;
+    width: 100%;
+    aspect-ratio: 77 / 100;
+    display: none;
+}
+
+.verse_bg{
+    background-image: url(./image/verse_background.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+#header{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 2%;
+    width: 70%;
+    padding-top: 10px;
+    overflow: visible;
+    flex-shrink: 0;
+    margin: 0 auto;
+}
+
+#title_image{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    opacity: 0;
+}
+
+#lamp_image{
+    width: 15%;
+    opacity: 0;
+}
+
+#text-space{
+    position: absolute;
+    top: 27%;
+    left: 0;
+    right: 0;
+    width: 70%;
+    height: 50%;
+    margin: 0 auto;
+}
+
+#text-space p {
+    position: absolute;
+    top: 40%;
+    left: 0;
+    transform: translate(0%, -40%);
+    margin: 0;
+    text-align: center;
+}
+
+#word-space{
+    display: inline-block;
+    font-size: clamp(16px, 3vh, 48px);
+    padding: 0;
+    margin: 0;
+    line-height: 1.6;
+}
+
+#index-space{
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    font-size: clamp(16px, 2vh, 48px);
+    bottom: 25%;
+}
+
+#fam_image{
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 70%;
+    bottom: 5%;
+    opacity: 0;
+}
+
+#word-btn{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 40%;
+    margin: 0 auto;
+    width: 30%;
+}
+
+#btn_image{
+    width: 100%;
+}
+
+footer{
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 40%;
+    bottom: 0%;
+}
+
+#footer_image{
+    width: 100%;
+}
+
+#cursor {
+    visibility: hidden;
+    animation: blink 0.5s infinite;
+    font-size: 1.5rem;
+}
+
+@keyframes blink {
+    to {
+        opacity: 0;
+    }
+}
+
+#action-section{
+    width: 50%;
+    display: flex;
+    flex-direction: row; 
+    align-items: center;
+    justify-content: center;
+    visibility: hidden;
+}
+
+#download-btn {
+    width: 30%;
+    font-size: 10px;
+}
+
+#share-btn {
+    width: 30%;
+    font-size: 10px;
+}
