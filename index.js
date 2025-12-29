@@ -35,26 +35,27 @@ const shareBtn = document.getElementById("share-btn");
 const downloadBtn = document.getElementById("download-btn");
 const cursor = document.getElementById("cursor");
 
-async function anim(element) {
+async function anim(element, opacity_v=1, delay_v=500, duration_v=300) {
     const keyframe = [
         {opacity: 0},
-        {opacity: 1}
+        {opacity: opacity_v}
     ]
 
     const option = {
-        delay: 500,
-        duration: 300
+        delay: delay_v,
+        duration: duration_v
     }
     console.log(element, "animate");
     const a = element.animate(keyframe, option);
     a.onfinish = () => {
-        element.style.opacity = 1;
+        element.style.opacity = opacity_v;
     }
     await a.finished;
     //element.style.opacity = 1;
 }
 
 const lampImage = document.getElementById("lamp_image");
+const lightImage = document.getElementById("light_image");
 const famImage = document.getElementById("fam_image");
 const titleImage = document.getElementById("title_image");
 wordBtn.addEventListener("click", async (event) => {
@@ -69,11 +70,16 @@ wordBtn.addEventListener("click", async (event) => {
     const index = verse.index;
     const indexString = `\n${index.book} ${index.chapter}장 ${index.verse}절`;
     console.log(indexString);
+    if (verse.text.length / 14 >= 7) {
+        console.log("large verse")
+        wordSpace.style.fontSize = "2.5vh";
+    }
     await typing(verse.text, 100, wordSpace);
     const br = document.createElement("br");
     indexSpace.appendChild(br);
     await typing(indexString, 100, indexSpace);
     await anim(titleImage);
+    await anim(lightImage, 0.5, 500, 500);
     //cursor.style.visibility = "hidden";
     actionSection.style.visibility = "visible";
     if (!navigator.share) {
