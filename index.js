@@ -12,6 +12,17 @@ const typing = async (verse, speed, wordSpace) => {
     }
 }
 
+window.onload = () => {
+    navigator.mediaDevices.getUserMedia({ audio: true }).then(() => {
+        AudioContext = window.AudioContext || window.webkitAudioContext;
+        audioContext = new AudioContext();
+        const bgm = document.getElementById("bgm");
+        bgm.play();
+    }).catch(e => {
+        console.error(`Audio permissions denied: ${e}`);
+    });
+}
+
 let loading = true;
 let verses = null;
 fetch("./verses/verses.json")

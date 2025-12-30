@@ -6,6 +6,8 @@ body{
 
 .bg{
     height: auto;
+    top: 50%;
+    transform: translateY(-50%);
     max-height: 90svh;
     aspect-ratio: 5 / 7;
     background-image: url(./image/background.png);
@@ -104,6 +106,7 @@ body{
 
 #text-space p {
     margin: 0;
+    word-break: keep-all;
 }
 
 #word-space{
@@ -147,7 +150,7 @@ body{
     width: 30%;
     background-color: rgba(0, 0, 0, 0);
     border: 0;
-    animation: blink 0.8s 2s infinite;
+    animation: blink 2s 2s infinite;
 }
 
 #arrow_image{
