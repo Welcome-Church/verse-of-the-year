@@ -1,8 +1,7 @@
 
 body{
+    height: 100svh;
     margin: 0 auto;
-    overflow: hidden;
-    max-width: 100%;
 }
 
 .bg{
@@ -148,6 +147,17 @@ body{
     width: 30%;
     background-color: rgba(0, 0, 0, 0);
     border: 0;
+    animation: blink 0.8s 2s infinite;
+}
+
+#arrow_image{
+    position: absolute;
+    right: -20%;
+    top: 80%;
+    width: 30%;
+    transform: rotate(-20deg) translate(-50%, -50%);
+    /* animation: blink 0.8s 2s infinite; */
+    opacity: 0;
 }
 
 #btn_image{
@@ -174,8 +184,14 @@ footer{
 }
 
 @keyframes blink {
-    to {
-        opacity: 0;
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.2;
+    }
+    100% {
+        opacity: 1;
     }
 }
 
