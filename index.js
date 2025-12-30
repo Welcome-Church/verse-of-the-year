@@ -35,7 +35,7 @@ const shareBtn = document.getElementById("share-btn");
 const downloadBtn = document.getElementById("download-btn");
 const cursor = document.getElementById("cursor");
 
-async function anim(element, opacity_v=1, delay_v=500, duration_v=300) {
+async function anim(element, opacity_v=1, delay_v=300, duration_v=200) {
     const keyframe = [
         {opacity: 0},
         {opacity: opacity_v}
@@ -68,7 +68,7 @@ wordBtn.addEventListener("click", async (event) => {
     const verse = verses.words[Math.floor(Math.random() * verses.words.length)];
     
     const index = verse.index;
-    const indexString = `\n${index.book} ${index.chapter}장 ${index.verse}절`;
+    const indexString = `\n${index.book} ${index.chapter}:${index.verse}`;
     console.log(indexString);
     if (verse.text.length / 14 >= 7) {
         console.log("large verse")

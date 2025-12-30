@@ -15,6 +15,13 @@ body{
     position: relative;
 }
 
+@font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+}
+
 #middle_div{
     position: absolute;
     left: 0;
@@ -104,6 +111,7 @@ body{
     padding: 0;
     margin: 0;
     line-height: 1.6;
+    font-family: 'Pretendard';
 }
 
 #index-space{
@@ -111,9 +119,10 @@ body{
     left: 0;
     right: 0;
     margin: 0 auto;
-    font-size: 2svh;
+    font-size: 3svh;
     top: 75%;
     transform: translateY(-50%);
+    font-family: 'Pretendard';
 }
 
 #fam_image{
@@ -170,11 +179,12 @@ footer{
 
 #action-section{
     position: absolute;
-    right: -80%;
-    top: 100%;
+    right: 0%;
+    top: 115%;
     transform: translate(-50%, -50%);
     width: 50%;
     display: flex;
+    gap: 20%;
     min-height: 0;
     flex-direction: row; 
     align-items: center;
