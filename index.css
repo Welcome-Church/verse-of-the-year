@@ -1,11 +1,11 @@
 
 body{
-    height: 90%;
     margin: 0 auto;
 }
 
 .bg{
-    height: 90svh;
+    height: auto;
+    max-height: 90svh;
     aspect-ratio: 5 / 7;
     background-image: url(./image/background.png);
     background-repeat: no-repeat;
@@ -179,8 +179,8 @@ footer{
 
 #action-section{
     position: absolute;
-    right: 0%;
-    top: 115%;
+    right: -40%;
+    top: 100%;
     transform: translate(-50%, -50%);
     width: 50%;
     display: flex;
