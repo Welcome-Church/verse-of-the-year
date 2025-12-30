@@ -4,7 +4,7 @@ body{
 }
 
 .bg{
-    height: 90svh;
+    height: auto;
     aspect-ratio: 5 / 7;
     background-image: url(./image/background.png);
     background-repeat: no-repeat;
