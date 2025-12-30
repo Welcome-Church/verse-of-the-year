@@ -17,6 +17,7 @@ window.onload = () => {
         AudioContext = window.AudioContext || window.webkitAudioContext;
         audioContext = new AudioContext();
         const bgm = document.getElementById("bgm");
+        bgm.volume = 1;
         bgm.play();
     }).catch(e => {
         console.error(`Audio permissions denied: ${e}`);
@@ -81,7 +82,7 @@ wordBtn.addEventListener("click", async (event) => {
     const index = verse.index;
     const indexString = `\n${index.book} ${index.chapter}:${index.verse}`;
     console.log(indexString);
-    if (verse.text.length / 14 >= 7) {
+    if (verse.text.length / 14 >= 6) {
         console.log("large verse")
         wordSpace.style.fontSize = "2.5vh";
     }
