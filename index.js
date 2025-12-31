@@ -72,6 +72,7 @@ const famImage = document.getElementById("fam_image");
 const titleImage = document.getElementById("title_image");
 wordBtn.addEventListener("click", async (event) => {
     if (loading) return;
+    const thing = document.getElementById("thing");
     wordBtn.style.display = "none";
     mainSpace.style.display = "block";
     await anim(lampImage);
@@ -91,6 +92,7 @@ wordBtn.addEventListener("click", async (event) => {
     indexSpace.appendChild(br);
     await typing(indexString, 100, indexSpace);
     await anim(titleImage);
+    thing.play();
     await anim(lightImage, 0.5, 500, 500);
     //cursor.style.visibility = "hidden";
     actionSection.style.visibility = "visible";
